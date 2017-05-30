@@ -98,13 +98,22 @@ public class Main {
             } else {
                 angleNose -= 90;
             }
+            double maxDist = 0;
             for (int i = 0; i < 68; i++) {
                 distances[i] = Math.sqrt(shiftedPoints[i].x*shiftedPoints[i].x + shiftedPoints[i].y*shiftedPoints[i].y);
+                if (distances[i] > maxDist) {
+                    maxDist = distances[i];
+                }
                 if (shiftedPoints[i].x != 0) {
                     angles[i] = (Math.atan(shiftedPoints[i].y / shiftedPoints[i].x) * 180 / Math.PI) - angleNose;
                 } else {
                     angles[i] = 90 - angleNose;
                 }
+            }
+            for (int i = 0; i < 68; i++) {
+                shiftedPoints[i].x /= maxDist;
+                shiftedPoints[i].y /= maxDist;
+                distances[i] /= maxDist;
             }
         }
 
@@ -134,7 +143,7 @@ public class Main {
 
         // default values
         param.svm_type = svm_parameter.C_SVC;
-        param.kernel_type = svm_parameter.RBF;
+        param.kernel_type = svm_parameter.LINEAR;
         param.degree = 3;
         param.gamma = 0;
         param.coef0 = 0;
