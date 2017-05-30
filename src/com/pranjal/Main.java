@@ -47,19 +47,19 @@ public class Main {
 
             switch (type) {
                 case "anger" :
-                    expression = 6;
+                    expression = 1;
                     break;
                 case "disgust" :
-                    expression = 7;
+                    expression = 2;
                     break;
                 case "happy" :
-                    expression = 8;
+                    expression = 3;
                     break;
                 case "neutral" :
-                    expression = 5;
+                    expression = 0;
                     break;
                 case "surprise" :
-                    expression = 9;
+                    expression = 4;
                     break;
             }
 
